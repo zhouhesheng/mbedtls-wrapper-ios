@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9365493C21232D3300E12BC0 /* mbedTLSWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9365493221232D3300E12BC0 /* mbedTLSWrapper.framework */; };
-		9365494121232D3300E12BC0 /* mbedTLSWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365494021232D3300E12BC0 /* mbedTLSWrapperTests.m */; };
+		9365494121232D3300E12BC0 /* ECJPakeWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9365494021232D3300E12BC0 /* ECJPakeWrapperTests.m */; };
 		9365494321232D3300E12BC0 /* mbedTLSWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9365493521232D3300E12BC0 /* mbedTLSWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93654954212335A700E12BC0 /* libmbedx509.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93654951212335A700E12BC0 /* libmbedx509.a */; };
 		93654955212335A700E12BC0 /* libmbedtls.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93654952212335A700E12BC0 /* libmbedtls.a */; };
@@ -92,6 +92,8 @@
 		936549F32123366500E12BC0 /* x509_crt.h in Headers */ = {isa = PBXBuildFile; fileRef = 936549A42123366500E12BC0 /* x509_crt.h */; };
 		936549F42123366500E12BC0 /* x509_csr.h in Headers */ = {isa = PBXBuildFile; fileRef = 936549A52123366500E12BC0 /* x509_csr.h */; };
 		936549F52123366500E12BC0 /* xtea.h in Headers */ = {isa = PBXBuildFile; fileRef = 936549A62123366500E12BC0 /* xtea.h */; };
+		9381C83B2123404D007F1C61 /* ECJPakeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9381C8392123404D007F1C61 /* ECJPakeWrapper.m */; };
+		9381C83C2123404D007F1C61 /* ECJPakeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9381C83A2123404D007F1C61 /* ECJPakeWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +111,7 @@
 		9365493521232D3300E12BC0 /* mbedTLSWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mbedTLSWrapper.h; sourceTree = "<group>"; };
 		9365493621232D3300E12BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9365493B21232D3300E12BC0 /* mbedTLSWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mbedTLSWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9365494021232D3300E12BC0 /* mbedTLSWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mbedTLSWrapperTests.m; sourceTree = "<group>"; };
+		9365494021232D3300E12BC0 /* ECJPakeWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ECJPakeWrapperTests.m; sourceTree = "<group>"; };
 		9365494221232D3300E12BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93654951212335A700E12BC0 /* libmbedx509.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmbedx509.a; path = mbedTLS/lib/libmbedx509.a; sourceTree = "<group>"; };
 		93654952212335A700E12BC0 /* libmbedtls.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmbedtls.a; path = mbedTLS/lib/libmbedtls.a; sourceTree = "<group>"; };
@@ -193,6 +195,8 @@
 		936549A42123366500E12BC0 /* x509_crt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_crt.h; sourceTree = "<group>"; };
 		936549A52123366500E12BC0 /* x509_csr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509_csr.h; sourceTree = "<group>"; };
 		936549A62123366500E12BC0 /* xtea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xtea.h; sourceTree = "<group>"; };
+		9381C8392123404D007F1C61 /* ECJPakeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECJPakeWrapper.m; sourceTree = "<group>"; };
+		9381C83A2123404D007F1C61 /* ECJPakeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECJPakeWrapper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +244,8 @@
 		9365493421232D3300E12BC0 /* mbedTLSWrapper */ = {
 			isa = PBXGroup;
 			children = (
+				9381C83A2123404D007F1C61 /* ECJPakeWrapper.h */,
+				9381C8392123404D007F1C61 /* ECJPakeWrapper.m */,
 				9365493521232D3300E12BC0 /* mbedTLSWrapper.h */,
 				9365493621232D3300E12BC0 /* Info.plist */,
 			);
@@ -249,7 +255,7 @@
 		9365493F21232D3300E12BC0 /* mbedTLSWrapperTests */ = {
 			isa = PBXGroup;
 			children = (
-				9365494021232D3300E12BC0 /* mbedTLSWrapperTests.m */,
+				9365494021232D3300E12BC0 /* ECJPakeWrapperTests.m */,
 				9365494221232D3300E12BC0 /* Info.plist */,
 			);
 			path = mbedTLSWrapperTests;
@@ -433,6 +439,7 @@
 				9365494321232D3300E12BC0 /* mbedTLSWrapper.h in Headers */,
 				936549AC2123366500E12BC0 /* asn1write.h in Headers */,
 				936549C02123366500E12BC0 /* ecdh.h in Headers */,
+				9381C83C2123404D007F1C61 /* ECJPakeWrapper.h in Headers */,
 				936549B52123366500E12BC0 /* chachapoly.h in Headers */,
 				936549D02123366500E12BC0 /* md5.h in Headers */,
 				936549E02123366500E12BC0 /* platform_util.h in Headers */,
@@ -555,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9381C83B2123404D007F1C61 /* ECJPakeWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9365494121232D3300E12BC0 /* mbedTLSWrapperTests.m in Sources */,
+				9365494121232D3300E12BC0 /* ECJPakeWrapperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

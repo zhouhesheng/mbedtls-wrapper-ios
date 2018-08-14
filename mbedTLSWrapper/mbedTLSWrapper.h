@@ -14,6 +14,5 @@ FOUNDATION_EXPORT double mbedTLSWrapperVersionNumber;
 //! Project version string for mbedTLSWrapper.
 FOUNDATION_EXPORT const unsigned char mbedTLSWrapperVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <mbedTLSWrapper/PublicHeader.h>
-
+#import <mbedTLSWrapper/ECJPakeWrapper.h>
 
