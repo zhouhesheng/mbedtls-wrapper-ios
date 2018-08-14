@@ -16,13 +16,13 @@ typedef enum ECJPakeWrapperRoleType : NSUInteger {
 
 - (instancetype)initWithRole:(ECJPakeWrapperRoleType)role lowEntropySharedPassword:(nonnull NSString *)lowEntropySharedPassword;
 
-- (void)setup;
-- (void)readRoundOne:(nonnull NSData *)inputData;
-- (void)readRoundTwo:(nonnull NSData *)inputData;
+- (int)setup;
+- (int)readRoundOne:(nonnull NSData *)inputData;
+- (int)readRoundTwo:(nonnull NSData *)inputData;
 
-- (nonnull NSData *)writeRoundOne;
-- (nonnull NSData *)writeRoundTwo;
+- (nullable NSData *)writeRoundOne;
+- (nullable NSData *)writeRoundTwo;
 
-- (nonnull NSData *)deriveSharedSecret;
+- (nullable NSData *)deriveSharedSecret;
 
 @end
