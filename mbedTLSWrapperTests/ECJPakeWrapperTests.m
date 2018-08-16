@@ -27,12 +27,10 @@
     int result;
 
     ECJPakeWrapper *server = [[ECJPakeWrapper alloc] initWithRole:ECJPakeWrapperRoleServer lowEntropySharedPassword:serverPassword];
-    result = [server setup];
-    XCTAssertEqual(result, 0);
+    XCTAssertNotNil(server);
 
     ECJPakeWrapper *client = [[ECJPakeWrapper alloc] initWithRole:ECJPakeWrapperRoleClient lowEntropySharedPassword:clientPassword];
-    result = [client setup];
-    XCTAssertEqual(result, 0);
+    XCTAssertNotNil(client);
 
     NSData *c1 = [client writeRoundOne];
     XCTAssertNotNil(c1);

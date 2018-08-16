@@ -12,11 +12,8 @@ typedef enum ECJPakeWrapperRoleType : NSUInteger {
 
 @interface ECJPakeWrapper : NSObject
 
-@property (assign) BOOL debug;
-
 - (instancetype)initWithRole:(ECJPakeWrapperRoleType)role lowEntropySharedPassword:(nonnull NSString *)lowEntropySharedPassword;
 
-- (int)setup;
 - (int)readRoundOne:(nonnull NSData *)inputData;
 - (int)readRoundTwo:(nonnull NSData *)inputData;
 

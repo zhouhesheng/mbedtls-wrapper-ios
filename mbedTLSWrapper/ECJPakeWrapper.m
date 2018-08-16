@@ -21,7 +21,7 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
     mbedtls_entropy_context *_entropyCtx;
     mbedtls_ctr_drbg_context *_rngCtx;
 
-    bool _isSet;
+    BOOL _debug;
 }
 
 - (instancetype)initWithRole:(ECJPakeWrapperRoleType)role lowEntropySharedPassword:(NSString *)lowEntropySharedPassword {
@@ -29,14 +29,16 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
     if (self) {
         _role = role;
         _lowEntropySharedPassword = lowEntropySharedPassword;
+
+        if ([self setup] != 0){
+            return nil;
+        }
     }
     return self;
 }
 
 - (int)setup {
-    if (_isSet) {
-        return -1;
-    }
+    _debug = NO;
 
     //alloc contexts
     _jPakeCtx = malloc(sizeof(mbedtls_ecjpake_context));
@@ -50,14 +52,14 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
 
 
     unsigned char* seed = [_lowEntropySharedPassword UTF8String];
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"%@: setup ----------", [self roleString]);
         NSLog(@"sizeof(seed) = %zu", strlen(seed));
     }
 
     //setup rngContext
     int result = mbedtls_ctr_drbg_seed(_rngCtx, mbedtls_entropy_func, _entropyCtx, seed, strlen(seed));
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"mbedtls_ctr_drbg_seed result = %i", result);
     }
     if (result != 0) {
@@ -66,30 +68,24 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
 
     //setup ecjpakeContext
     result = mbedtls_ecjpake_setup(_jPakeCtx, (_role == ECJPakeWrapperRoleServer) ? MBEDTLS_ECJPAKE_SERVER : MBEDTLS_ECJPAKE_CLIENT, DEFAULT_HASH_TYPE, DEFAULT_CURVE_TYPE, seed, strlen(seed));
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"mbedtls_ecjpake_setup result = %i", result);
     }
     if (result != 0) {
         return result;
     }
 
-    _isSet = YES;
     return result;
 }
 
 - (NSData *)writeRoundOne {
-    if (!_isSet) {
-        NSLog(@"Run [ECJPakeWrapper setup] first!");
-        return nil;
-    }
-
     size_t bytesWrittenToBuffer = 0;
     unsigned char *buffer = malloc(MAX_BUFFER_SIZE);
 
     int result = mbedtls_ecjpake_write_round_one(_jPakeCtx, buffer, MAX_BUFFER_SIZE, &bytesWrittenToBuffer, mbedtls_ctr_drbg_random, _rngCtx);
     NSData *data = [NSData dataWithBytes:buffer length:bytesWrittenToBuffer];
 
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"%@: writeRoundOne ----------", [self roleString]);
         NSLog(@"result = %i", result);
         NSLog(@"bytesWrittenToBuffer = %lu", bytesWrittenToBuffer);
@@ -105,18 +101,13 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
 }
 
 - (NSData *)writeRoundTwo {
-    if (!_isSet) {
-        NSLog(@"Run [ECJPakeWrapper setup] first!");
-        return nil;
-    }
-
     size_t bytesWrittenToBuffer = 0;
     unsigned char *buffer = malloc(MAX_BUFFER_SIZE);
 
     int result = mbedtls_ecjpake_write_round_two(_jPakeCtx, buffer, MAX_BUFFER_SIZE, &bytesWrittenToBuffer, mbedtls_ctr_drbg_random, _rngCtx);
     NSData *data = [NSData dataWithBytes:buffer length:bytesWrittenToBuffer];
 
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"%@: writeRoundTwo ----------", [self roleString]);
         NSLog(@"result = %i", result);
         NSLog(@"bytesWrittenToBuffer = %lu", bytesWrittenToBuffer);
@@ -132,16 +123,11 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
 }
 
 - (int)readRoundOne:(NSData *)inputData {
-    if (!_isSet) {
-        NSLog(@"Run [ECJPakeWrapper setup] first!");
-        return -1;
-    }
-
     unsigned char *buffer = [inputData bytes];
     size_t bufferSize = [inputData length];
 
     int result = mbedtls_ecjpake_read_round_one(_jPakeCtx, buffer, bufferSize);
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"%@: readRoundOne ----------", [self roleString]);
         NSLog(@"result = %i", result);
     }
@@ -150,16 +136,11 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
 }
 
 - (int)readRoundTwo:(NSData *)inputData {
-    if (!_isSet) {
-        NSLog(@"Run [ECJPakeWrapper setup] first!");
-        return -1;
-    }
-
     unsigned char *buffer = [inputData bytes];
     size_t bufferSize = [inputData length];
 
     int result = mbedtls_ecjpake_read_round_two(_jPakeCtx, buffer, bufferSize);
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"%@: readRoundTwo ----------", [self roleString]);
         NSLog(@"result = %i", result);
     }
@@ -168,11 +149,6 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
 }
 
 - (NSData *)deriveSharedSecret {
-    if (!_isSet) {
-        NSLog(@"Run [ECJPakeWrapper setup] first!");
-        return nil;
-    }
-
     size_t secretSize = mbedtls_md_get_size(_jPakeCtx->md_info);
 
     size_t bytesWrittenToBuffer = 0;
@@ -180,7 +156,7 @@ static const size_t MAX_BUFFER_SIZE = MBEDTLS_SSL_MAX_CONTENT_LEN;
 
     int result = mbedtls_ecjpake_derive_secret(_jPakeCtx, buffer, secretSize, &bytesWrittenToBuffer, mbedtls_ctr_drbg_random, _rngCtx);
     NSData *data = [NSData dataWithBytes:buffer length:bytesWrittenToBuffer];
-    if (self.debug) {
+    if (_debug) {
         NSLog(@"%@: deriveSharedSecret ----------", [self roleString]);
         NSLog(@"result = %i", result);
         NSLog(@"bytesWrittenToBuffer = %lu", bytesWrittenToBuffer);
