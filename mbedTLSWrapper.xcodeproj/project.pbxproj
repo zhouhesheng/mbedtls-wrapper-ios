@@ -94,8 +94,13 @@
 		936549F52123366500E12BC0 /* xtea.h in Headers */ = {isa = PBXBuildFile; fileRef = 936549A62123366500E12BC0 /* xtea.h */; };
 		9381C83B2123404D007F1C61 /* ECJPakeWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9381C8392123404D007F1C61 /* ECJPakeWrapper.m */; };
 		9381C83C2123404D007F1C61 /* ECJPakeWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9381C83A2123404D007F1C61 /* ECJPakeWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93E2029F212C8F7D00EA5ADF /* HashWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E2029E212C8F7D00EA5ADF /* HashWrapperTests.m */; };
 		C810B0968974B42335AFA0E3 /* AesCcmWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C810BF73A2044DF592136790 /* AesCcmWrapper.m */; };
-		C810BFD78E87B298AAFF6080 /* AesCcmWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C810B1D5EEEE0869D53EB26C /* AesCcmWrapper.h */; };
+		C810B1DB0D95A33030F113A3 /* HmacWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C810B3C32497DDD61CDF3A2C /* HmacWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C810B5051E71BBC5B04E5B8A /* Sha256Wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C810B5DA6A003D7283BFEB80 /* Sha256Wrapper.m */; };
+		C810B55F104D11A6568ACEE8 /* Sha256Wrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C810B405F2ADBEA6A8E5DC71 /* Sha256Wrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C810B9BD69BDF8EACC8427D3 /* HmacWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C810B4ED66BB11107E777B25 /* HmacWrapper.m */; };
+		C810BFD78E87B298AAFF6080 /* AesCcmWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C810B1D5EEEE0869D53EB26C /* AesCcmWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,7 +205,12 @@
 		936549A62123366500E12BC0 /* xtea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xtea.h; sourceTree = "<group>"; };
 		9381C8392123404D007F1C61 /* ECJPakeWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECJPakeWrapper.m; sourceTree = "<group>"; };
 		9381C83A2123404D007F1C61 /* ECJPakeWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECJPakeWrapper.h; sourceTree = "<group>"; };
+		93E2029E212C8F7D00EA5ADF /* HashWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HashWrapperTests.m; sourceTree = "<group>"; };
 		C810B1D5EEEE0869D53EB26C /* AesCcmWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AesCcmWrapper.h; sourceTree = "<group>"; };
+		C810B3C32497DDD61CDF3A2C /* HmacWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HmacWrapper.h; sourceTree = "<group>"; };
+		C810B405F2ADBEA6A8E5DC71 /* Sha256Wrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sha256Wrapper.h; sourceTree = "<group>"; };
+		C810B4ED66BB11107E777B25 /* HmacWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HmacWrapper.m; sourceTree = "<group>"; };
+		C810B5DA6A003D7283BFEB80 /* Sha256Wrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sha256Wrapper.m; sourceTree = "<group>"; };
 		C810BF73A2044DF592136790 /* AesCcmWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AesCcmWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,6 +265,10 @@
 				9365493621232D3300E12BC0 /* Info.plist */,
 				C810BF73A2044DF592136790 /* AesCcmWrapper.m */,
 				C810B1D5EEEE0869D53EB26C /* AesCcmWrapper.h */,
+				C810B5DA6A003D7283BFEB80 /* Sha256Wrapper.m */,
+				C810B405F2ADBEA6A8E5DC71 /* Sha256Wrapper.h */,
+				C810B4ED66BB11107E777B25 /* HmacWrapper.m */,
+				C810B3C32497DDD61CDF3A2C /* HmacWrapper.h */,
 			);
 			path = mbedTLSWrapper;
 			sourceTree = "<group>";
@@ -262,6 +276,7 @@
 		9365493F21232D3300E12BC0 /* mbedTLSWrapperTests */ = {
 			isa = PBXGroup;
 			children = (
+				93E2029E212C8F7D00EA5ADF /* HashWrapperTests.m */,
 				9359A73A2125C507000B6F3B /* AesCcmWrappedTests.m */,
 				9365494021232D3300E12BC0 /* ECJPakeWrapperTests.m */,
 				9365494221232D3300E12BC0 /* Info.plist */,
@@ -454,6 +469,8 @@
 				936549AE2123366500E12BC0 /* bignum.h in Headers */,
 				936549CA2123366500E12BC0 /* hkdf.h in Headers */,
 				C810BFD78E87B298AAFF6080 /* AesCcmWrapper.h in Headers */,
+				C810B55F104D11A6568ACEE8 /* Sha256Wrapper.h in Headers */,
+				C810B1DB0D95A33030F113A3 /* HmacWrapper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +590,8 @@
 			files = (
 				9381C83B2123404D007F1C61 /* ECJPakeWrapper.m in Sources */,
 				C810B0968974B42335AFA0E3 /* AesCcmWrapper.m in Sources */,
+				C810B5051E71BBC5B04E5B8A /* Sha256Wrapper.m in Sources */,
+				C810B9BD69BDF8EACC8427D3 /* HmacWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +599,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93E2029F212C8F7D00EA5ADF /* HashWrapperTests.m in Sources */,
 				9365494121232D3300E12BC0 /* ECJPakeWrapperTests.m in Sources */,
 				9359A73B2125C507000B6F3B /* AesCcmWrappedTests.m in Sources */,
 			);

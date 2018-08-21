@@ -15,4 +15,7 @@ FOUNDATION_EXPORT double mbedTLSWrapperVersionNumber;
 FOUNDATION_EXPORT const unsigned char mbedTLSWrapperVersionString[];
 
 #import <mbedTLSWrapper/ECJPakeWrapper.h>
+#import <mbedTLSWrapper/AesCcmWrapper.h>
+#import <mbedTLSWrapper/Sha256Wrapper.h>
+#import <mbedTLSWrapper/HmacWrapper.h>
 

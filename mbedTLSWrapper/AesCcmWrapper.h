@@ -4,7 +4,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ccm.h"
 
 @interface AesCcmWrapper : NSObject
 
